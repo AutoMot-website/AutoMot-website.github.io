@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AutoMoT</title>
+
+  <!-- Simple styling -->
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #ffffff;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .figure {
+      max-width: 900px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    .figure img {
+      width: 90%;
+      height: auto;
+    }
+
+    /* size modifiers */
+    .figure.medium img {
+      width: 75%;
+    }
+
+    .figure.small img {
+      width: 55%;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .title-icon {
+      height: 44px;  /* icon size */
+      width: auto;
+      transform: translateY(3px);
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-top: 50px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .caption {
+      font-size: 16px;
+      line-height: 1.6;
+      /* max-width: 700px; */
+      margin: 0 auto;
+      text-align: justify;
+      margin: 0;
+    }
+
+    hr {
+      margin: 40px 0;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Title -->
+    <h1>
+      <span class="brand">
+        <img src="imgs/AutoMoT_icon.jpg" alt="AutoMoT icon" class="title-icon">
+      </span>
+      AutoMoT: A Unified Vision-Langauge-Action Model with Asynchronous Mixture-of-Transformers for End-to-End Autonomous Driving
+    </h1>
+
+    <!-- Abstract -->
+    <h2>Abstract</h2>
+    <p class="caption">
+      Integrating vision-language models (VLMs) into end-to-end (E2E) autonomous driving (AD) systems has shown promise in improving scene understanding. However, existing integration 
+      strategies suffer from several limitations: they either struggle to resolve distribution misalignment between reasoning and action spaces, underexploit
+      the general reasoning capabilities of pretrained VLMs, or incur substantial inference latency during action policies generation, which degrades
+      driving performance. To address these challenges, we propose AutoMoT in this work, an end-to-end AD framework that unifies reasoning and action
+      generation within a single vision-language-action (VLA) model. Our approach leverages a mixture-of-transformer (MoT) architecture with joint 
+      attention sharing, which preserves the general reasoning capabilities of pre-trained VLMs while enabling efficient fast-slow inference through 
+      asynchronous execution at different task frequencies. Additionally, we introduce a VLA-oriented differentiable action refiner that further enhances 
+      driving performance via diffusion-based fine-tuning. Extensive experiments on multiple benchmarks, under both open- and closed-loop settings, demonstrate 
+      that AutoMoT achieves competitive performance compared to state-of-the-art methods.
+    </p>
+
+  </div>
+
+  <div class="figure medium">
+    <h2>Framework</h2>
+    <img src="imgs/framework_v1.svg" alt="AutoMoT Framework">
+    <p class="caption">
+      As an end-to-end autonomous driving framework, AutoMoT unifies scene understanding, decision-making, and trajectory planning within 
+      a single VLA model. AutoMoT adopts a MoT architecture that connects the understanding expert and the action expert via layer-wise joint 
+      attention sharing, while enabling fast-slow inference through asynchronous execution at different frequencies. A VLA-oriented
+      differentiable action refiner is further integrated to enhance driving performance via diffusion-based refinement.
+    </p>
+  </div>
+
+  <div class="figure small">
+    <h2>Attention Mask</h2>
+    <img src="imgs/attention.svg" alt="AutoMoT Attention Mask">
+    <p class="caption">
+      Our mask coordinates understanding, decision-making, and planning within a unified attention space. It enables intra-task multi-modal 
+      aggregation and cross-task information flow while preserving task-level causal ordering. This hybrid design maintains hierachical 
+      causality and supports rich contextual integration, enabling AutoMoT to achieve coherent multi-task reasoning and trajectory planning.
+    </p>
+  </div>
+
+  <div class="figure">
+    <h2>Refiner</h2>
+    <img src="imgs/refiner.svg" alt="AutoMoT Refiner">
+    <p class="caption">
+      The architecture of DiT-based trajectory refiner with Mixture-of-Attention blocks. After positional embedding and up-sampled BEV 
+      feature enhancement, the stacked MoA learns a cross-modal fused attention for the unified heterogeneous query. In MoA, an 
+      asymmetric block diagonal self-attention mask is posed, and the AutoMoT reasoning fusion intensity is adjusted by a learnable gate.
+    </p>
+  </div>
+
+  <div class="figure">
+    <h2>CARLA closed-loop results</h2>
+    <img src="imgs/carla_closed_loop.jpg" alt="AutoMoT carla results">
+    <p class="caption">
+      Comparison of the Closed-loop Planning in CARLA Bench2Drive Leaderboard. C/L refers to the camera/LiDAR input. DS: 
+      Driving Score, SR: Success Rate.
+    </p>
+  </div>
+
+  <div class="figure">
+    <h2>nuScenes open-loop results</h2>
+    <img src="imgs/nuscenes_open_loop.jpg" alt="AutoMoT nuscenes results">
+    <p class="caption">
+      Comparison of the Open-loop planning in nuScenes. The ST-P3 evaluation protocol is used by default.
+    </p>
+  </div>
+</body>
+</html>
