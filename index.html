@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <title>AutoMoT</title>
 
-  <!-- Simple styling -->
   <style>
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -87,6 +86,51 @@
       border: none;
       border-top: 1px solid #ddd;
     }
+
+    .video-grid {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+      display: grid;
+      /* grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); */
+      grid-template-columns: repeat(2, 1fr); /* FORCE 2 per row */
+      gap: 18px;
+    }
+
+    .video-card {
+    text-align: left;
+    }
+
+    .video-card video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      border: 1px solid #e6e6e6;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      background: #000; /* avoids white flash while loading */
+    }
+
+    .video-title {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .video-desc {
+      margin-top: 6px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #666;
+    }
+
+  /* stack on small screens */
+    @media (max-width: 700px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -163,6 +207,67 @@
     <p class="caption">
       Comparison of the Open-loop planning in nuScenes. The ST-P3 evaluation protocol is used by default.
     </p>
+  </div>
+
+  <div class="figure">
+    <h2>Closed-loop runs (videos)</h2>
+    <p class="caption">
+      Example closed-loop runs showcasing key scenarios.
+    </p>
+  </div>
+
+  <div class="video-grid">
+    <div class="video-card">
+      <video
+        src="showcase_vids/RouteScenario_2286_rep0_Town12_HighwayCutIn_1_18_02_06_14_30_16.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+        controls
+        preload="metadata"
+      ></video>
+      <div class="video-title">Highway Cut-In</div>
+    </div>
+
+    <div class="video-card">
+      <video
+        src="showcase_vids/RouteScenario_3086_rep0_Town12_CrossingBicycleFlow_1_12_02_06_11.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+        controls
+        preload="metadata"
+      ></video>
+      <div class="video-title">Crossing Bicycle Flow</div>
+    </div>
+
+    <div class="video-card">
+      <video
+        src="showcase_vids/RouteScenario_3666_rep0_Town13_NonSignalizedJunctionRightTurn_1.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+        controls
+        preload="metadata"
+      ></video>
+      <div class="video-title">Non-Signalized Junction Right Turn</div>
+    </div>
+
+    <div class="video-card">
+      <video
+        src="showcase_vids/first15.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+        controls
+        preload="metadata"
+      ></video>
+      <div class="video-title">Accident</div>
+    </div>
   </div>
 </body>
 </html>
