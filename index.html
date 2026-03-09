@@ -163,7 +163,7 @@
 
   <div class="figure medium">
     <h2>Framework</h2>
-    <img src="imgs/framework_v1.svg" alt="AutoMoT Framework">
+    <img src="imgs/frameworkv2.png" alt="AutoMoT Framework">
     <p class="caption">
       As an end-to-end autonomous driving framework, AutoMoT unifies scene understanding, decision-making, and trajectory planning within 
       a single VLA model. AutoMoT adopts a MoT architecture that connects the understanding expert and the action expert via layer-wise joint 
@@ -174,7 +174,7 @@
 
   <div class="figure small">
     <h2>Attention Mask</h2>
-    <img src="imgs/attention.svg" alt="AutoMoT Attention Mask">
+    <img src="imgs/attention.png" alt="AutoMoT Attention Mask">
     <p class="caption">
       Our mask coordinates understanding, decision-making, and planning within a unified attention space. It enables intra-task multi-modal 
       aggregation and cross-task information flow while preserving task-level causal ordering. This hybrid design maintains hierachical 
@@ -183,18 +183,8 @@
   </div>
 
   <div class="figure">
-    <h2>Refiner</h2>
-    <img src="imgs/refiner.svg" alt="AutoMoT Refiner">
-    <p class="caption">
-      The architecture of DiT-based trajectory refiner with Mixture-of-Attention blocks. After positional embedding and up-sampled BEV 
-      feature enhancement, the stacked MoA learns a cross-modal fused attention for the unified heterogeneous query. In MoA, an 
-      asymmetric block diagonal self-attention mask is posed, and the AutoMoT reasoning fusion intensity is adjusted by a learnable gate.
-    </p>
-  </div>
-
-  <div class="figure">
     <h2>CARLA closed-loop results</h2>
-    <img src="imgs/carla_closed_loop.jpg" alt="AutoMoT carla results">
+    <img src="imgs/b2d.png" alt="AutoMoT carla results">
     <p class="caption">
       Comparison of the Closed-loop Planning in CARLA Bench2Drive Leaderboard. C/L refers to the camera/LiDAR input. DS: 
       Driving Score, SR: Success Rate.
