@@ -88,9 +88,9 @@
     }
 
     .video-section {
-      max-width: 1100px;
+      max-width: 1400px;
       margin: 50px auto 0;
-      padding: 0 20px;
+      padding: 0 40px;
     }
 
     .video-section h2 {
@@ -99,8 +99,8 @@
 
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
       margin-top: 24px;
     }
 
@@ -120,20 +120,14 @@
 
     .video-title {
       margin-top: 8px;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 600;
       color: #333;
       text-align: center;
     }
 
     /* stack on small screens */
-    @media (max-width: 800px) {
-      .video-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       .video-grid {
         grid-template-columns: 1fr;
       }
